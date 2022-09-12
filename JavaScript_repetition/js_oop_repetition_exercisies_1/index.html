@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="rectangle">Bok A <input class="rectangle" type="number" /></label>
+      <label for="rectangle">Bok B <input class="rectangle" type="number" /></label>
+      <button type="button" onclick="count()">oblicz</button>
+    </form>
+    <p>Obwod</p>
+    <p class="result"></p>
+    <p>Pole</p>
+    <p class="result"></p>
+    <script>
+      function count() {
+        const inputs = document.getElementsByClassName("rectangle");
+        const results = document.getElementsByClassName("result");
+        const circuit = inputs[0].value * 2 + inputs[1].value * 2;
+        const area = inputs[0].value * inputs[1].value;
+        results[0].innerHTML = circuit;
+        results[1].innerHTML = area;
+      }
+    </script>
+  </body>
+</html>

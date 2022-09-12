@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+    <div class="form-area">
+      <form>
+        <fieldset>
+          <lablel>Marka</lablel>
+          <input type="text" class="general-info" name="brand"/>
+          <lablel>Model</lablel>
+          <input type="text" class="general-info" name="model"/>
+          <lablel>Rok produkcji</lablel>
+          <input type="number" class="general-info" name="year"/>
+          <lablel>Cena</lablel>
+          <input type="number" class="general-info" name="price"/>
+        </fieldset>
+        <fieldset>
+          <lablel>Wypadkowy</lablel>
+          <input type="radio" name="insurance" class="insurance" value="wypadkowy"/>
+          <lablel>Bezwypadkowy</lablel>
+          <input type="radio" name="insurance" class="insurance" value="bezwypadkowy"/>
+        </fieldset>
+        <fieldset>
+          <lablel>Koło</lablel>
+          <input type="checkbox" name="accesories" class="accesories" value="kolo"/>
+          <lablel>Znak ostrzegawczy</lablel>
+          <input type="checkbox" name="accesories" class="accesories" value="znak"/>
+          <lablel>Klucz do kół</lablel>
+          <input type="checkbox" name="accesories" class="accesories" value="klucz"/>
+        </fieldset>
+        <fieldset>
+          <lablel>Kraj pochodzenia</lablel>
+          <select id="country">
+            <option>Polska</option>
+            <option>Niemcy</option>
+            <option>Francja</option>
+            <option>Wlochy</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <lablel>Dodatkowe uwagi</lablel>
+          <textarea id="additional-info"></textarea>
+        </fieldset>
+        <button type="button" onclick="getDataClassName()">Wyślij</button>
+      </form>
+      <pre id="result"></pre>
+    </main>
+    </div>
+    <script>
+        function getDataClassName(){
+            const general = document.getElementsByClassName('general-info');
+            const insurance = document.getElementsByName('insurance');
+            const accesories = document.getElementsByName('accesories');
+            const country =document.getElementById('country');
+            const info =document.getElementById('additional-info');
+
+            const infoObject = {brand:"",model:"",year:null,price:null,insurance:"",accesories:[],country:"",additionalInfo:""};
+
+            for(let ref of general){
+                infoObject[ref.name]=ref.value;
+            }
+
+            for(const ref of insurance){
+                if(ref.checked){
+                    infoObject[ref.name]=ref.value;
+                }
+            }
+
+            for(const ref of accesories){
+                if(ref.checked){
+                    infoObject[ref.name].push(ref.value);
+                }
+            }
+            infoObject.country=country.value;
+            infoObject.additionalInfo=info.value;
+            document.getElementById('result').innerHTML=JSON.stringify(infoObject);
+        }
+    </script>
+  </body>
+</html>

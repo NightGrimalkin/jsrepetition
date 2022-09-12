@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+    <div class="form-area">
+      <form>
+        <fieldset>
+          <lablel>Marka</lablel>
+          <input type="text" class="general-info" name="brand"/>
+          <lablel>Model</lablel>
+          <input type="text" class="general-info" name="model"/>
+          <lablel>Rok produkcji</lablel>
+          <input type="number" class="general-info" name="year"/>
+          <lablel>Cena</lablel>
+          <input type="number" class="general-info" name="price"/>
+        </fieldset>
+        <fieldset>
+          <lablel>System</lablel>
+          <input type="radio" name="system" class="system" value="yes"/>
+          <lablel>Bez systemu</lablel>
+          <input type="radio" name="system" class="system" value="no"/>
+        </fieldset>
+        <fieldset>
+          <lablel>Procesor</lablel>
+          <input type="checkbox" name="parameters" class="parameters" value="procesor"/>
+          <lablel>karta graficzna</lablel>
+          <input type="checkbox" name="parameters" class="parameters" value="graficzna"/>
+          <lablel>karta dzwiekowa</lablel>
+          <input type="checkbox" name="parameters" class="parameters" value="dzwiekowa"/>
+        </fieldset>
+        <fieldset>
+          <lablel>Oddział</lablel>
+          <select id="unit">
+            <option>Sosnowiec</option>
+            <option>Jaworzno</option>
+            <option>Warszawa</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <lablel>Dodatkowe uwagi</lablel>
+          <textarea id="additional-info"></textarea>
+        </fieldset>
+        <button type="button" onclick="getDataClassName()">Wyślij</button>
+      </form>
+      <pre id="result"></pre>
+    </main>
+    </div>
+    <script>
+        function getDataClassName(){
+            const general = document.getElementsByClassName('general-info');
+            const system = document.getElementsByName('system');
+            const parameters = document.getElementsByName('parameters');
+            const unit =document.getElementById('unit');
+            const info =document.getElementById('additional-info');
+
+            const infoObject = {brand:"",model:"",year:null,price:null,system:"",parameters:[],unit:"",additionalInfo:""};
+
+            for(let ref of general){
+                infoObject[ref.name]=ref.value;
+            }
+
+            for(const ref of system){
+                if(ref.checked){
+                    infoObject[ref.name]=ref.value;
+                }
+            }
+
+            for(const ref of parameters){
+                if(ref.checked){
+                    infoObject[ref.name].push(ref.value);
+                }
+            }
+            infoObject.unit=unit.value;
+            infoObject.additionalInfo=info.value;
+            document.getElementById('result').innerHTML=JSON.stringify(infoObject);
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="registration" />
+      <button type="button" onclick="send()">wyslij</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      function send() {
+        const regExRegistration = /^[A-Z]{2,3} [0-9][0-9][0-9][0-9][0-9]$/gm;
+
+        const registrationRef = document.getElementById("registration");
+        if (registrationRef.value.match(regExRegistration)) {
+          document.getElementById("result").innerHTML =
+            "nr rejestracyjny: " + registrationRef.value;
+        } else {
+          document.getElementById("result").innerHTML = "zła wartość";
+        }
+      }
+    </script>
+  </body>
+</html>

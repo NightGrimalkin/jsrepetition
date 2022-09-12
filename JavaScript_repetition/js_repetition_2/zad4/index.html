@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="number" id="circle" />
+      <button type="button" onclick="count()">oblicz</button>
+    </form>
+    <script>
+      function count() {
+        const beam = document.getElementById("circle");
+        const beamValue = parseFloat(document.getElementById("circle").value);
+
+        if (beam && beam.value && beamValue != NaN && beamValue > 0) {
+          let area = Math.PI * (beamValue * beamValue);
+          let circuit = Math.PI * 2 * beamValue;
+          console.log("pole: " + area);
+          console.log("obwod: " + circuit);
+        } else {
+          console.log("blad wejscia");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="number" id="km" />
+      <button type="button" onclick="count()">Oblicz</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      const count = function () {
+        const km = document.getElementById("km");
+        const results = document.getElementById("result");
+
+        let mile = km.value * 0.6214;
+
+        console.log("mile morskie: " +mile)
+        results.innerHTML = "mile morskie: " + mile;
+      };
+    </script>
+  </body>
+</html>

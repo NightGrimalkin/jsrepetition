@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="number" class="side" />
+      <input type="number" class="side" />
+      <button type="button" onclick="count()">oblicz</button>
+    </form>
+    <script>
+      function count() {
+        const sides = document.getElementsByClassName("side");
+
+        const a = parseFloat(sides[0].value);
+        const b = parseFloat(sides[1].value);
+
+        if (
+          sides &&
+          sides[0].value &&
+          sides[1].value &&
+          a != NaN &&
+          a > 0 &&
+          b != NaN &&
+          b > 0
+        ) {
+          let area = a * b;
+          let circuit = 2 * a + 2 * b;
+          console.log("pole: " + area);
+          console.log("obwod: " + circuit);
+        } else {
+          console.log("blad wejscia");
+        }
+      }
+    </script>
+  </body>
+</html>

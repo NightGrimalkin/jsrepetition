@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <lablel>Marka</lablel>
+      <input type="text" class="general-info" name="brand" />
+      <lablel>Model</lablel>
+      <input type="text" class="general-info" name="model" />
+      <lablel>Rok produkcji</lablel>
+      <input type="number" class="general-info" name="year" />
+      <lablel>Cena</lablel>
+      <input type="number" class="general-info" name="price" />
+      <lablel>nr rej</lablel>
+      <input type="number" class="general-info" name="registration" />
+      <button type="button" onclick="getDataClassName()">Wyślij</button>
+    </form>
+    <pre id="result"></pre>
+    <script>
+      const getDataClassName = function () {
+        const general = document.getElementsByClassName("general-info");
+
+        let brand = general[0].value;
+        let model = general[1].value;
+        let year = general[2].value;
+        let price = general[3].value;
+        let registration = general[4].value;
+
+        console.log("brand: " + brand);
+        console.log("model: " + model);
+        console.log("year: " + year);
+        console.log("price: " + price);
+        console.log("registration: " + registration);
+
+        document.getElementById("result").innerHTML =
+          "brand: " +
+          brand +
+          " model: " +
+          model +
+          " year: " +
+          year +
+          " price: " +
+          price +
+          " registration: " +
+          registration;
+      };
+    </script>
+  </body>
+</html>

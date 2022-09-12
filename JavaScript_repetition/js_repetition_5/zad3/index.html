@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="info" />
+      <input type="text" name="info" />
+      <button type="button" onclick="send()">wyslij</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      function send() {
+        const regExSite =
+          /^(?:www.stackoverflow.com)\/[^$]+$|^(?:www.stackoverflow.com)$/gm;
+        const regExmail = /^(?:.{1,}@gmail\.com)$/gm;
+
+        const registrationRef = document.getElementsByName("info");
+
+        if (
+          registrationRef[0].value.match(regExSite) &&
+          registrationRef[1].value.match(regExmail)
+        ) {
+          document.getElementById("result").innerHTML =
+            "Strona: " +
+            registrationRef[0].value +
+            " Mail: " +
+            registrationRef[1].value;
+        } else {
+          document.getElementById("result").innerHTML = "zła wartość";
+        }
+      }
+    </script>
+  </body>
+</html>

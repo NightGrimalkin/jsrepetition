@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <p>A</p>
+      <input type="number" name="math-function-parameter" />
+      <p>B</p>
+      <input type="number" name="math-function-parameter" />
+      <p>C</p>
+      <input type="number" name="math-function-parameter" />
+      <button type="button" onclick="calculate()">Oblicz</button>
+      <p class="result"></p>
+      <p class="result"></p>
+    </form>
+    <script>
+      function calculate() {
+        const squareEquation = document.getElementsByName(
+          "math-function-parameter"
+        );
+        const results = document.getElementsByClassName("result");
+
+        let a, b, c;
+
+        a = squareEquation[0].value;
+        b = squareEquation[1].value;
+        c = squareEquation[2].value;
+
+        let delta = b * b - 4 * a * c;
+        if (delta < 0) {
+          results[0].innerHTML = "ujemna delta nie ma rozwiazania";
+          results[1].innerHTML = "ujemna delta nie ma rozwiazania";
+        } else {
+          results[0].innerHTML = ((-b + Math.sqrt(delta)) / 2) * a;
+          results[1].innerHTML = ((-b - Math.sqrt(delta)) / 2) * a;
+        }
+      }
+    </script>
+  </body>
+</html>

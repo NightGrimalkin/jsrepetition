@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input type="number" class="num" />
+      <input type="number" class="num" />
+      <button type="button" onclick="calculate()">Oblicz</button>
+    </form>
+    <p id="outcome"></p>
+    <script>
+      function calculate() {
+        const range = document.getElementsByClassName("num");
+
+        let a = range[0].value;
+        let b = range[1].value;
+        let result = 0;
+
+        if (b > a) {
+          do {
+            result += parseInt(a);
+            a++;
+          } while (a < b);
+          {
+            result += parseInt(a);
+            a++;
+          }
+          document.getElementById("outcome").innerHTML = result;
+        } else {
+          document.getElementById("outcome").innerHTML = "b większe lub równe a";
+        }
+      }
+    </script>
+  </body>
+</html>
